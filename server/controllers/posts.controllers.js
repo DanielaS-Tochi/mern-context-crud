@@ -14,12 +14,7 @@ export const createPost = async (req, res) => {
     try {
         const { title, description } = req.body
 
-        if (req.files.image) {
-            const result = await uploadImage(req.files.image.tempFilePath)
-            console.log(result)
-        }
-
-        const newPost = new Post({ title, description })
+        const newPost = newPost({ title, description })
 
         await newPost.save()
 
